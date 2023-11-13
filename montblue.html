@@ -1,0 +1,1226 @@
+<!-- ****----Sales by Match -----****** -->
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class SockMerchant {
+
+    // Function to count the number of pairs of socks with matching colors
+    static int sockMerchant(int n, int[] ar) {
+        // Map to store the count of each color
+        Map<Integer, Integer> colorCount = new HashMap<>();
+
+        // Count the occurrences of each color
+        for (int color : ar) {
+            colorCount.put(color, colorCount.getOrDefault(color, 0) + 1);
+        }
+
+        // Count the number of pairs for each color
+        int totalPairs = 0;
+        for (int count : colorCount.values()) {
+            totalPairs += count / 2;
+        }
+
+        return totalPairs;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the number of socks
+        int n = scanner.nextInt();
+
+        // Read the colors of the socks
+        int[] ar = new int[n];
+        for (int i = 0; i < n; i++) {
+            ar[i] = scanner.nextInt();
+        }
+
+        // Call the sockMerchant function and print the result
+        int result = sockMerchant(n, ar);
+        System.out.println(result);
+
+        scanner.close();
+    }
+}
+
+
+<!-- ****---- Number Line Jumps -----****** -->
+
+import os
+
+def kangaroo(x1, v1, x2, v2):
+    # Write your code here
+    for i in range(1000000):
+        x1 = x1 + v1
+        x2 = x2 + v2
+        if x1 == x2:
+            return "YES"
+        if i == 999999:
+            return "NO"
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    first_multiple_input = input().rstrip().split()
+    x1 = int(first_multiple_input[0])
+    v1 = int(first_multiple_input[1])
+    x2 = int(first_multiple_input[2])
+    v2 = int(first_multiple_input[3])
+    result = kangaroo(x1, v1, x2, v2)
+    print(result)
+    fptr.write(result + '\n')
+    fptr.close()
+
+
+
+
+<!-- ****---- Simple Array Sum -----****** -->
+
+def simple_array_sum(ar):
+    return sum(ar)
+
+# Example usage:
+ar = [1, 2, 3, 4, 10, 11]
+result = simple_array_sum(ar)
+print(result)
+
+
+<!-- ****----  Breaking the Records -----****** -->
+
+import os
+
+def breaking_records(scores):
+    high_score = scores[0]
+    low_score = scores[0]
+    high_count = 0
+    low_count = 0
+
+    for i in range(1, len(scores)):
+        if scores[i] > high_score:
+            high_score = scores[i]
+            high_count += 1
+        elif scores[i] < low_score:
+            low_score = scores[i]
+            low_count += 1
+
+    return [high_count, low_count]
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    scores = list(map(int, input().rstrip().split()))
+
+    result = breaking_records(scores)
+
+    fptr.write(' '.join(map(str, result)) + '\n')
+
+    fptr.close()
+
+
+****----  STAIRCASE -----******
+
+def staircase(n):
+    for i in range(1, n + 1):
+        spaces = ' ' * (n - i)
+        hashes = '#' * i
+        print(spaces + hashes)
+
+# Example usage:
+staircase(6)
+
+
+<!-- ****---- Compare the Triplets  -----****** -->
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the compareTriplets function below.
+def compareTriplets(a, b):
+    pointa=0
+    pointb=0
+    ar = []
+    for i in range(3):
+        if a[i]>b[i]:
+            pointa+=1
+            
+        if a[i]<b[i]:
+            pointb+=1
+    ar.insert(0,pointa)
+    ar.insert(1,pointb)        
+    return(ar)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    a = list(map(int, input().rstrip().split()))
+
+    b = list(map(int, input().rstrip().split()))
+
+    result = compareTriplets(a, b)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
+
+
+
+
+
+<!-- ****----  Quicksort 1 - Partition  -----****** -->
+
+
+import sys
+
+def quickSort(arr):
+    left = []
+    equal = []
+    right = []
+    pivot = arr[0]
+    
+    for el in arr:
+        if el < pivot:
+            left.append(el)
+        elif el == pivot:
+            equal.append(el)
+        elif el > pivot:
+            right.append(el)
+            
+    return left + equal + right
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    arr = list(map(int, input().strip().split(' ')))
+    result = quickSort(arr)
+    print (" ".join(map(str, result)))
+
+
+
+
+<!-- ****---- Between Two Sets  -----****** -->
+
+from math import gcd
+
+def get_hcf(arr):
+    hcf = arr[0] 
+    for i in arr:
+        hcf = gcd(hcf,i)
+    return hcf
+
+def lcm(a,b):
+    return a*b//gcd(a,b)
+
+def get_lcm(arr):
+    l = arr[0] 
+    for i in arr:
+        l = lcm(l,i)
+    return l
+
+def getTotalX(a,b):
+    lcm_a = get_lcm(a)
+    hcf_b = get_hcf(b)
+    no_between_sets = sum(1 for i in range(lcm_a, hcf_b+1, lcm_a) if not hcf_b%i and i%lcm_a==0)
+    return no_between_sets
+    
+n,m = map(int,input().split())
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+
+print(getTotalX(a,b))
+
+
+
+<!-- ------Super Reduced String------------ -->
+
+import re
+
+inp=input().strip()
+regex=re.compile(r'(\D)(\1)',re.M|re.I)
+search=regex.search(inp)
+while search:
+    inp=inp.replace(search.group(),'')
+    search=regex.search(inp)
+print(inp if inp else 'Empty String')
+
+
+
+<!-- -------Bill Division-------- -->
+
+
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+b = int(input())
+
+x = sum(a) - a[k]
+if 2 * b == x: print("Bon Appetit")
+else: print(a[k] // 2)
+
+
+<!-- A Very Big Sum -->
+
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the aVeryBigSum function below.
+def aVeryBigSum(ar):
+    x=0
+    for i in range(0,len(ar)):
+        x= x + ar[i]
+    return x
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    ar_count = int(input())
+
+    ar = list(map(int, input().rstrip().split()))
+
+    result = aVeryBigSum(ar)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+    <!-- Plus Minus -->
+
+    #!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the plusMinus function below.
+def plusMinus(arr):
+    x,z,y=0,0,0
+    for i in range(0,len(arr)):
+        if arr[i]>0:
+            x = x + 1
+        elif arr[i]<0:
+            y = y + 1
+        else:
+            z = z + 1
+    print(x/len(arr))
+    print(y/len(arr))
+    print(z/len(arr))
+
+if __name__ == '__main__':
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    plusMinus(arr)
+
+
+
+  <!-- Subarray Division  -->
+  #!/bin/python3
+
+import sys
+
+
+n = int(input().strip())
+squares = list(map(int, input().strip().split(' ')))
+d,m = input().strip().split(' ')
+d,m = [int(d),int(m)]
+# your code goes here
+
+count = 0
+for i in range(m, n+1):
+#    print(i-m, i, squares[i-m:i], d)
+    if sum(squares[i-m:i]) == d:
+        count += 1
+        
+print(count)
+
+
+
+<!-- Migratory Birds -->
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+def migratoryBirds(arr):
+    # Write your code here
+    count = [0] * 6
+    for i in arr:
+        count[i] += 1
+    return count.index(max(count))
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    arr_count = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = migratoryBirds(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+    <!-- Diagonal Difference -->
+
+    #!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'diagonalDifference' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts 2D_INTEGER_ARRAY arr as parameter.
+#
+
+def diagonalDifference(arr):
+    temp = 0
+    emp = 0
+    for i in range(0,len(arr)):
+        temp = temp + arr[i][i]
+    
+    for j in range(0,len(arr)):
+        emp = emp + arr[j][len(arr)-1-j]
+    
+    return abs(temp - emp)
+
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    arr = []
+
+    for _ in range(n):
+        arr.append(list(map(int, input().rstrip().split())))
+
+    result = diagonalDifference(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+<!-- Grading Students -->
+
+    n = int(input().strip())
+   for a0 in range(n):
+    grade = int(input().strip())
+
+    if grade >= 38:
+        mod5 = grade % 5
+        if mod5 >= 3:
+            grade = grade + (5 - mod5)
+    print(grade)
+
+
+<!-- Drawing Book -->
+
+import sys
+
+n = int(input().strip())
+p = int(input().strip())
+print(min(p//2,n//2-(p//2)))
+
+
+<!-- Divisible Sum Pairs -->
+
+import sys
+
+
+n,k = input().strip().split(' ')
+n,k = [int(n),int(k)]
+a = [int(a_temp) for a_temp in input().strip().split(' ')]
+
+result = 0
+for i in range(n-1):
+    for j in range(i+1, n):
+        if not ((a[i] + a[j]) % k):
+            result += 1
+print(result)
+
+
+<!--  Mini-Max Sum -->
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+def miniMaxSum(arr):
+    # Write your code here
+    arr = sorted(arr)
+    print(sum(arr[:-1]),sum(arr[1:]))
+
+if __name__ == '__main__':
+
+    arr = list(map(int, input().rstrip().split()))
+
+    miniMaxSum(arr)
+
+
+
+<!-- Counting Valleys -->
+
+N=int(input())
+S=input()
+L=0
+V=0
+for s in S:
+    if s == 'U':
+        L += 1
+        if L == 0:
+            V += 1
+    else:
+        L -= 1
+print(V)
+
+
+
+<!-- Library Fine -->
+
+#include <stdio.h>
+    #include <string.h>
+    #include <math.h>
+    #include <stdlib.h>
+    
+    int main() {    
+        
+        int edd, emm, eyyyy, add, amm, ayyyy;
+        int fine =0;
+        
+        scanf("%d%d%d%d%d%d", &add, &amm, &ayyyy, &edd, &emm, &eyyyy);
+        
+        if(ayyyy < eyyyy){
+            fine = 0;    
+        }
+        else if(ayyyy > eyyyy){
+            fine = 10000;
+        }
+        else if(ayyyy == eyyyy){
+            if(amm < emm){
+                fine = 0;
+            }
+            else if(amm > emm){
+                fine = 500 * (amm - emm);
+            }
+            else if(amm == emm){
+                if(add <= edd){
+                    fine = 0;
+                }
+                else if(add > edd){
+                    fine = 15 * (add - edd);
+                }
+            }
+        }
+        
+        printf("%d", fine);
+        
+        return 0;
+    }
+
+
+
+<!-- Time Conversion -->
+
+import os
+import sys
+
+def timeConversion(s):
+    time = s.split(":")
+    if s[-2:] == "PM":
+        if time[0] != "12":
+            time[0] = str(int(time[0])+12)
+    else:
+        if time[0] == "12":
+            time[0] = "00"
+    ntime = ':'.join(time)
+    return str(ntime[:-2])
+    
+if __name__ == '__main__':
+    f = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = timeConversion(s)
+
+    f.write(result + '\n')
+
+    f.close()
+
+
+
+    <!-- Caesar Cipher  -->
+
+
+N = int(input())
+string = list(input())
+addNum = int(input())
+
+length = len(string)
+for i in range(length):
+	if ord(string[i]) <= ord("Z") and ord(string[i]) >= ord("A"):
+		asciiCode = ord(string[i]) + addNum
+		while asciiCode > ord("Z"):
+			asciiCode = asciiCode - ord("Z") + ord("A") - 1
+		string[i] = chr(asciiCode)
+	elif ord(string[i]) <= ord("z") and ord(string[i]) >= ord("a"):
+		asciiCode = ord(string[i]) + addNum
+		while asciiCode > ord("z"):
+			asciiCode = asciiCode - ord("z") + ord("a") - 1
+		string[i] = chr(asciiCode)
+
+print("".join(string))
+
+
+<!-- towerBreakers -->
+
+T = int(input())
+for t in range(T):
+    n, m = [int(x) for x in input().strip().split()]
+    if m == 1: 
+        print(2)
+    else:
+        if n % 2 == 1:
+            print(1)
+        else:
+            print(2)
+
+
+<!-- hurdleRace -->
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+def hurdleRace(k, height):
+    maxi = max(height)
+    if(maxi>k):
+        return maxi-k
+    return 0
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nk = input().split()
+
+    n = int(nk[0])
+
+    k = int(nk[1])
+
+    height = list(map(int, input().rstrip().split()))
+
+    result = hurdleRace(k, height)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+<!-- Strong Password -->
+
+
+import math
+import os
+import random
+import re
+import sys
+
+numbers = "0123456789"
+lower_case = "abcdefghijklmnopqrstuvwxyz"
+upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+special_characters = "!@#$%^&*()-+"
+
+def minimumNumber(n, password):
+    res = 0
+
+    if not any(x in numbers for x in password):
+        res += 1
+    
+    if not any(x in lower_case for x in password):
+        res += 1
+
+    if not any(x in upper_case for x in password):
+        res += 1
+
+    if not any(x in special_characters for x in password):
+        res += 1
+
+    if len(password) < 6:
+        return max(res, 6 - len(password))
+    
+    return res
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+    password = input()
+
+    answer = minimumNumber(n, password)
+
+    fptr.write(str(answer) + '\n')
+    fptr.close()
+
+
+<!-- Minimum Absolute Difference in an Array -->
+
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the minimumAbsoluteDifference function below.
+def minimumAbsoluteDifference(arr):
+    diffs = []
+    arr.sort()
+    for i in range(len(arr)-1):
+        diffs.append(abs(arr[i]-arr[i+1]))
+    return min(diffs)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = minimumAbsoluteDifference(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+<!--  Mars Exploration  -->
+
+
+s = input()
+n = "SOS"*(len(s)//3)
+cnt = 0
+for i in range(len(s)):
+    if s[i] != n[i]:
+        cnt += 1
+print(cnt)
+
+
+
+<!-- Electronics Shop -->
+
+#!/bin/python3
+
+import os
+import sys
+
+def getMoneySpent(keyboards, drives, b):
+    return max([sum([x,y]) for x in keyboards for y in drives if sum([x,y]) <= b]+[-1])
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    bnm = input().split()
+
+    b = int(bnm[0])
+
+    n = int(bnm[1])
+
+    m = int(bnm[2])
+
+    keyboards = list(map(int, input().rstrip().split()))
+
+    drives = list(map(int, input().rstrip().split()))
+
+    moneySpent = getMoneySpent(keyboards, drives, b)
+
+    fptr.write(str(moneySpent) + '\n')
+
+    fptr.close()
+
+
+
+<!-- Viral Advertising  -->
+
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the viralAdvertising function below.
+def viralAdvertising(n):
+    shared =5
+    cumulative=0
+    for i in range(1,n+1):
+        liked = shared//2
+        cumulative+=liked
+        shared = liked*3
+    return cumulative
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    result = viralAdvertising(n)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+    <!-- Jumping on the Clouds: Revisited -->
+
+    #!/bin/python3
+
+import sys
+
+def jumpingOnClouds(c, k):
+    cur = k % n
+    energy = 100 - 1 - c[cur]*2
+    
+    while cur != 0:
+        cur = (cur + k) % n
+        energy -= 1 + c[cur]*2
+        
+    return energy
+
+if __name__ == "__main__":
+    n, k = input().strip().split(' ')
+    n, k = [int(n), int(k)]
+    c = list(map(int, input().strip().split(' ')))
+    result = jumpingOnClouds(c, k)
+    print(result)
+
+
+
+
+    <!-- Game of Stones -->
+
+
+    def get_winner(n):
+    ans=[None]*(n+1)
+    ans[0]=False
+    ans[1]=False
+    for i in range(n+1):
+        if ans[i]==False:
+            for j in [i+2,i+3,i+5]:
+                if j<n+1:
+                    ans[j]=True
+        elif ans[i] is None:
+            for j in [i-2, i-3, i-5]:
+                if j>0 and ans[j]!=True:
+                    print('??',i,j,ans[j])
+            ans[i]=False
+            for j in [i+2,i+3,i+5]:
+                if j<n+1:
+                    ans[j]=True
+        # print(i,ans)
+    return ans
+
+w=get_winner(100)
+for _ in range(int(input().strip())):
+    print('First' if w[int(input().strip())] else 'Second')
+
+
+
+<!--  Marc's Cakewalk  -->
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        Integer[] calories = new Integer[n];
+        for(int calories_i=0; calories_i < n; calories_i++){
+            calories[calories_i] = in.nextInt();
+        }
+        List<Integer> calList = Arrays.asList(calories);
+        Collections.sort(calList, Collections.reverseOrder());
+
+        long cals = 0;
+        for (int i=0;i<calList.size();i++) {
+            cals += Math.pow(2,i)*calList.get(i);
+        }
+        System.out.println(cals);
+    }
+}
+
+
+
+<!--  Cats and a Mouse  -->
+
+#!/bin/python3
+
+import sys
+
+
+q = int(input().strip())
+for a0 in range(q):
+    x,y,z = input().strip().split(' ')
+    x,y,z = [int(x),int(y),int(z)]
+    if abs(x-z)>abs(y-z):
+        print('Cat B')
+    elif abs(x-z)<abs(y-z):
+        print('Cat A')
+    else:
+        print('Mouse C')
+
+
+
+
+<!-- Save the Prisoner!   -->
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        int c = Integer.parseInt(scan.nextLine());
+        for(int i=0;i<c;i++){
+            String[] sp = scan.nextLine().split("\\s+");
+            int N = Integer.parseInt(sp[0]);
+            int M = Integer.parseInt(sp[1]);
+            int S = Integer.parseInt(sp[2]);
+            int next = M+S;
+            next=(next-1)%N;
+            if(next == 0)next = N;
+            System.out.println(next);
+        }
+    }
+}
+
+
+
+<!-- Beautiful Days at the Movies  -->
+
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'beautifulDays' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER i
+#  2. INTEGER j
+#  3. INTEGER k
+#
+
+def beautifulDays(i, j, k):
+    daycount = int(0)
+    for x in range(i, j+1):
+        if (x - int(str(x)[::-1])) % k == 0:
+            daycount += 1
+    return daycount
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    first_multiple_input = input().rstrip().split()
+
+    i = int(first_multiple_input[0])
+
+    j = int(first_multiple_input[1])
+
+    k = int(first_multiple_input[2])
+
+    result = beautifulDays(i, j, k)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+    <!-- Sequence Equation -->
+
+
+    #!/usr/bin/env python3
+
+import sys
+
+def permutationEquation(p):
+    output = []
+    
+    for num in range(1, max(p)+1):
+        output.append(p.index(p.index(num)+1)+1)
+        
+    return output
+    
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    p = list(map(int, input().strip().split(' ')))
+    result = permutationEquation(p)
+    print ("\n".join(map(str, result)))
+
+
+
+
+
+<!-- Grid Challenge -->
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+ 
+    static void gridChallenge(String[] grid,int n) {
+        char ll[] = new char[n];
+        char b[] = new char[n];
+        boolean xx=true;
+        int i=0;
+     while(xx && i<grid[0].length()){
+         for(int j=0 ; j<n;j++ ){
+            ll[j]=grid[j].charAt(i);
+         }
+           
+            b=Arrays.copyOf(ll,n);
+            Arrays.sort(ll);
+            
+            if(!(Arrays.equals(b,ll))){
+                  xx=false; 
+                  break;
+            }          
+         i++;
+    }
+       
+            if(xx){
+                System.out.println("YES");
+            }
+            else{
+                System.out.println("NO");
+            }
+     }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int x = scanner.nextInt();
+    
+        for (int j = 0; j < x; j++){
+             int n = scanner.nextInt();
+               String[] arr = new String[n];
+            for (int i = 0; i < n; i++) {
+                String arrItem = scanner.next();
+                    char xx[]=arrItem.toCharArray();
+                        Arrays.sort(xx);  
+                            String string = new String(xx);
+                                arr[i] = string ;
+            }
+                    gridChallenge(arr,n);
+         }    
+    }
+}
+
+
+
+
+<!--  Angry Professor  -->
+
+t = int(input())
+
+for _ in range(t):
+    n, k = map(int, input().split())
+    arr = list(map(int, input().split()))
+
+    cnt = 0
+    for x in arr:
+        if x <= 0:
+            cnt += 1
+    if cnt >= k:
+        print("NO")
+    else:
+        print("YES")
+
+
+<!-- Sherlock and Squares -->
+
+
+t = int(input())
+
+for i in range (0,t):
+	count = 0
+	a,b = [int(j) for j in input().strip().split()]
+	square1 = a ** (.5)
+	if (square1 != int(square1)):
+		a1 = int(square1) + 1
+	else:
+		a1 = int(square1)
+	square2 = b ** (.5)
+	b1 = int(square2)
+	count = b1 - a1 +1
+	print(count)
+
+
+
+    <!-- Circular Array Rotation -->
+
+
+    N, K, Q= map(int, input().split())
+A= tuple(map(int, input().split()))
+for _ in range(Q):
+    print(A[(int(input())+N-K)%N])
+
+
+
+    <!-- Big Sorting -->
+
+    #!/bin/python3
+
+import sys
+
+
+n = int(input().strip())
+unsorted = []
+unsorted_i = 0
+for unsorted_i in range(n):
+    unsorted_t = str(input().strip())
+    unsorted.append(unsorted_t)
+for v in sorted(unsorted, key = lambda v: int(v)):
+    print(v)
+
+
+
+
+<!-- Big Sorting -->
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        String[] unsorted = new String[n];
+        for(int unsorted_i=0; unsorted_i < n; unsorted_i++){
+            unsorted[unsorted_i] = in.next();
+        }
+        Map<Integer, ArrayList<String>> map = new TreeMap<>();
+        for(int i = 0; i < n; i++) {
+            ArrayList<String> mapValue = map.get(unsorted[i].length());
+            if(mapValue == null) {
+                mapValue = new ArrayList<>();
+                mapValue.add(unsorted[i]);
+                map.put(unsorted[i].length(), mapValue);
+            } else {
+                mapValue.add(unsorted[i]);
+            }
+        }
+        
+        for(ArrayList<String> list : map.values()) {
+            Collections.sort(list);
+        }
+        
+        for(Integer i : map.keySet()) {
+            System.out.println(Arrays.toString(map.get(i).toArray(new String[0])).replaceAll("[\\[\\],]", "").replaceAll(" ", "\n"));
+        }
+    }
+}
+
+
+<!-- Equalize the Array -->
+
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the equalizeArray function below.
+def equalizeArray(arr):
+    return (len(arr) - arr.count(max(set(arr), key = arr.count)))
+
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = equalizeArray(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+    <!--  -->
