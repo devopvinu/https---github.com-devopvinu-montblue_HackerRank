@@ -275,7 +275,6 @@ import random
 import re
 import sys
 
-# Complete the aVeryBigSum function below.
 def aVeryBigSum(ar):
     x=0
     for i in range(0,len(ar)):
@@ -395,12 +394,6 @@ import random
 import re
 import sys
 
-#
-# Complete the 'diagonalDifference' function below.
-#
-# The function is expected to return an INTEGER.
-# The function accepts 2D_INTEGER_ARRAY arr as parameter.
-#
 
 def diagonalDifference(arr):
     temp = 0
@@ -1352,3 +1345,21 @@ if __name__ == '__main__':
     print (str(answer) + '\n')
     # fptr.write(str(answer) + '\n')
     # fptr.close()
+
+
+    <!-- Maximum Perimeter Triangle -->
+
+    n = int(input())
+a = list(map(int, input().split()))
+a = sorted(a)
+for i in range(0,n-2):
+    x = a[n-1-i]
+    y = a[n-2-i]
+    z = a[n-3-i]
+    if y + z > x:
+        print(str(z) + " "+ str(y) + " " + str(x))
+        exit()
+print(-1)
+
+
+
