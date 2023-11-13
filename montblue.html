@@ -1223,4 +1223,132 @@ if __name__ == '__main__':
     fptr.close()
 
 
-    <!--  -->
+    <!--   Minimum Distances  -->
+
+    import sys
+
+def minimumDistances(array):
+    res = -1
+    memo = [-1] * (10**5 + 3)
+    
+    for ind, el in enumerate(array):
+        if memo[el] >= 0:
+            res = min(res if res >= 0 else 10**5 + 2, ind - memo[el])
+        memo[el] = ind
+        
+    return res
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    a = list(map(int, input().strip().split(' ')))
+    result = minimumDistances(a)
+    print(result)
+
+
+
+
+    <!-- Separate the Numbers  -->
+
+
+
+    #!/bin/python3
+
+import sys
+
+def validate(s, first):
+    while s:
+        if s.startswith(first):
+            s = s[len(first):]
+            first = str(int(first) + 1)
+        else:
+            return False
+    return True
+
+def separateNumbers(s):
+    if s[0] == '0' and len(s) > 1:
+        return "NO"
+    else:
+        for ind in range(1, len(s)//2 + 1):
+            first = s[:ind]
+            if validate(str(s), first):
+                return "YES " + first
+    return "NO"
+            
+
+if __name__ == "__main__":
+    q = int(input().strip())
+    for a0 in range(q):
+        s = input().strip()
+        print(separateNumbers(s))
+
+
+
+
+
+<!-- The Love-Letter Mystery -->
+
+
+#!/bin/python3
+
+import sys
+
+def theLoveLetterMystery(s):
+    string = list(s)
+    res = 0
+    first = []
+    second = []
+    
+    if len(string) % 2 == 1:
+        first = list(map(lambda x: ord(x), string[:len(string)//2]))
+        first = first[::-1]
+        second = list(map(lambda x: ord(x), string[len(string)//2 + 1:]))
+    else:
+        first = list(map(lambda x: ord(x), string[:len(string)//2 - 1]))
+        first = first[::-1]
+        second = list(map(lambda x: ord(x), string[len(string)//2 + 1:]))
+        res = abs(ord(string[len(string)//2 - 1]) - ord(string[len(string)//2]))
+        
+    for ind in range(len(first)):
+        if first[ind] != second[ind]:
+            res += abs(first[ind] - second[ind])
+            first[ind] = min(first[ind], second[ind])
+            second[ind] = first[ind]
+            
+    return res
+        
+        
+
+q = int(input().strip())
+for a0 in range(q):
+    s = input().strip()
+    result = theLoveLetterMystery(s)
+    print(result)
+
+
+
+
+    <!-- Halloween Sale -->
+
+
+import os
+
+def howManyGames(p, d, m, s):
+    price = result = last_price = 0
+    while price <= s:
+        if result == 0:
+            last_price = p
+        elif last_price - d > m:
+            last_price = last_price - d
+        else:
+            last_price = m
+        price += last_price
+        result += 1
+    return result - 1
+
+if __name__ == '__main__':
+    # fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    p, d, m, s = list(map(int, input().strip().split(' ')))
+    answer = howManyGames(p, d, m, s)
+    print (str(answer) + '\n')
+    # fptr.write(str(answer) + '\n')
+    # fptr.close()
