@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Solutions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Code Solutions</h1>
+
+    <div id="accordion">
+
+        <!-- Solution 1 -->
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+                            aria-controls="collapseOne">
+                        Sales by Match
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        import java.util.HashMap;
+                        import java.util.Map;
+                        import java.util.Scanner;
+                        
+                        public class SockMerchant {
+                        
+                            // Function to count the number of pairs of socks with matching colors
+                            static int sockMerchant(int n, int[] ar) {
+                                // Map to store the count of each color
+                                Map<Integer, Integer> colorCount = new HashMap<>();
+                        
+                                // Count the occurrences of each color
+                                for (int color : ar) {
+                                    colorCount.put(color, colorCount.getOrDefault(color, 0) + 1);
+                                }
+                        
+                                // Count the number of pairs for each color
+                                int totalPairs = 0;
+                                for (int count : colorCount.values()) {
+                                    totalPairs += count / 2;
+                                }
+                        
+                                return totalPairs;
+                            }
+                        
+                            public static void main(String[] args) {
+                                Scanner scanner = new Scanner(System.in);
+                        
+                                // Read the number of socks
+                                int n = scanner.nextInt();
+                        
+                                // Read the colors of the socks
+                                int[] ar = new int[n];
+                                for (int i = 0; i < n; i++) {
+                                    ar[i] = scanner.nextInt();
+                                }
+                        
+                                // Call the sockMerchant function and print the result
+                                int result = sockMerchant(n, ar);
+                                System.out.println(result);
+                        
+                                scanner.close();
+                            }
+                        }
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solution 2 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                        Number Line Jumps
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        import os
+
+                        def kangaroo(x1, v1, x2, v2):
+                            # Write your code here
+                            for i in range(1000000):
+                                x1 = x1 + v1
+                                x2 = x2 + v2
+                                if x1 == x2:
+                                    return "YES"
+                                if i == 999999:
+                                    return "NO"
+                        
+                        if __name__ == '__main__':
+                            fptr = open(os.environ['OUTPUT_PATH'], 'w')
+                            first_multiple_input = input().rstrip().split()
+                            x1 = int(first_multiple_input[0])
+                            v1 = int(first_multiple_input[1])
+                            x2 = int(first_multiple_input[2])
+                            v2 = int(first_multiple_input[3])
+                            result = kangaroo(x1, v1, x2, v2)
+                            print(result)
+                            fptr.write(result + '\n')
+                            fptr.close()
+                        
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Simple Array Sum 3 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Simple Array Sum
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        def simple_array_sum(ar):
+                            return sum(ar)
+                        ar = [1, 2, 3, 4, 10, 11]
+                        result = simple_array_sum(ar)
+                        print(result)
+
+                        </code></pre>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Solution 4 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Breaking the Records
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        import os
+
+def breaking_records(scores):
+    high_score = scores[0]
+    low_score = scores[0]
+    high_count = 0
+    low_count = 0
+
+    for i in range(1, len(scores)):
+        if scores[i] > high_score:
+            high_score = scores[i]
+            high_count += 1
+        elif scores[i] < low_score:
+            low_score = scores[i]
+            low_count += 1
+
+    return [high_count, low_count]
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    scores = list(map(int, input().rstrip().split()))
+
+    result = breaking_records(scores)
+
+    fptr.write(' '.join(map(str, result)) + '\n')
+
+    fptr.close()
+
+
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Solution 5 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            STAIRCASE
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        def staircase(n):
+                        for i in range(1, n + 1):
+                            spaces = ' ' * (n - i)
+                            hashes = '#' * i
+                            print(spaces + hashes)
+                    
+                   
+                    staircase(6)
+                    
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 6 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Compare the Triplets
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+                        import math
+                        import os
+                        import random
+                        import re
+                        import sys
+                        
+                        # Complete the compareTriplets function below.
+                        def compareTriplets(a, b):
+                            pointa=0
+                            pointb=0
+                            ar = []
+                            for i in range(3):
+                                if a[i]>b[i]:
+                                    pointa+=1
+                                    
+                                if a[i]<b[i]:
+                                    pointb+=1
+                            ar.insert(0,pointa)
+                            ar.insert(1,pointb)        
+                            return(ar)
+                        
+                        if __name__ == '__main__':
+                            fptr = open(os.environ['OUTPUT_PATH'], 'w')
+                        
+                            a = list(map(int, input().rstrip().split()))
+                        
+                            b = list(map(int, input().rstrip().split()))
+                        
+                            result = compareTriplets(a, b)
+                        
+                            fptr.write(' '.join(map(str, result)))
+                            fptr.write('\n')
+                        
+                            fptr.close()
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 7 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Quicksort 1 - Partition
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        import sys
+
+def quickSort(arr):
+    left = []
+    equal = []
+    right = []
+    pivot = arr[0]
+    
+    for el in arr:
+        if el < pivot:
+            left.append(el)
+        elif el == pivot:
+            equal.append(el)
+        elif el > pivot:
+            right.append(el)
+            
+    return left + equal + right
+
+if __name__ == "__main__":
+    n = int(input().strip())
+    arr = list(map(int, input().strip().split(' ')))
+    result = quickSort(arr)
+    print (" ".join(map(str, result)))
+
+
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 8 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Between Two Sets
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        from math import gcd
+
+                        def get_hcf(arr):
+                            hcf = arr[0] 
+                            for i in arr:
+                                hcf = gcd(hcf,i)
+                            return hcf
+                        
+                        def lcm(a,b):
+                            return a*b//gcd(a,b)
+                        
+                        def get_lcm(arr):
+                            l = arr[0] 
+                            for i in arr:
+                                l = lcm(l,i)
+                            return l
+                        
+                        def getTotalX(a,b):
+                            lcm_a = get_lcm(a)
+                            hcf_b = get_hcf(b)
+                            no_between_sets = sum(1 for i in range(lcm_a, hcf_b+1, lcm_a) if not hcf_b%i and i%lcm_a==0)
+                            return no_between_sets
+                            
+                        n,m = map(int,input().split())
+                        a = list(map(int,input().split()))
+                        b = list(map(int,input().split()))
+                        
+                        print(getTotalX(a,b))
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 9 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Super Reduced String
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        import re
+
+                        inp=input().strip()
+                        regex=re.compile(r'(\D)(\1)',re.M|re.I)
+                        search=regex.search(inp)
+                        while search:
+                            inp=inp.replace(search.group(),'')
+                            search=regex.search(inp)
+                        print(inp if inp else 'Empty String')
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 10 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            -Bill Division
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        n, k = map(int, input().split())
+                        a = list(map(int, input().split()))
+                        b = int(input())
+                        
+                        x = sum(a) - a[k]
+                        if 2 * b == x: print("Bon Appetit")
+                        else: print(a[k] // 2)
+                                            </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 11 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            A Very Big Sum
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+                        import math
+                        import os
+                        import random
+                        import re
+                        import sys
+                        
+                        def aVeryBigSum(ar):
+                            x=0
+                            for i in range(0,len(ar)):
+                                x= x + ar[i]
+                            return x
+                        
+                        
+                        if __name__ == '__main__':
+                            fptr = open(os.environ['OUTPUT_PATH'], 'w')
+                        
+                            ar_count = int(input())
+                        
+                            ar = list(map(int, input().rstrip().split()))
+                        
+                            result = aVeryBigSum(ar)
+                        
+                            fptr.write(str(result) + '\n')
+                        
+                            fptr.close()
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 12 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Plus Minus
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+                        import math
+                        import os
+                        import random
+                        import re
+                        import sys
+                        
+                        # Complete the plusMinus function below.
+                        def plusMinus(arr):
+                            x,z,y=0,0,0
+                            for i in range(0,len(arr)):
+                                if arr[i]>0:
+                                    x = x + 1
+                                elif arr[i]<0:
+                                    y = y + 1
+                                else:
+                                    z = z + 1
+                            print(x/len(arr))
+                            print(y/len(arr))
+                            print(z/len(arr))
+                        
+                        if __name__ == '__main__':
+                            n = int(input())
+                        
+                            arr = list(map(int, input().rstrip().split()))
+                        
+                            plusMinus(arr)
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 13 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Subarray Division
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+                import sys
+
+
+                n = int(input().strip())
+                squares = list(map(int, input().strip().split(' ')))
+                d,m = input().strip().split(' ')
+                d,m = [int(d),int(m)]
+                # your code goes here
+
+                count = 0
+                for i in range(m, n+1):
+                #    print(i-m, i, squares[i-m:i], d)
+                    if sum(squares[i-m:i]) == d:
+                        count += 1
+                        
+                print(count)
+                                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 14 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Migratory Birds
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                       
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+def migratoryBirds(arr):
+    # Write your code here
+    count = [0] * 6
+    for i in arr:
+        count[i] += 1
+    return count.index(max(count))
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    arr_count = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = migratoryBirds(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 15 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Diagonal Difference
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+                        import math
+                        import os
+                        import random
+                        import re
+                        import sys
+                        
+                        
+                        def diagonalDifference(arr):
+                            temp = 0
+                            emp = 0
+                            for i in range(0,len(arr)):
+                                temp = temp + arr[i][i]
+                            
+                            for j in range(0,len(arr)):
+                                emp = emp + arr[j][len(arr)-1-j]
+                            
+                            return abs(temp - emp)
+                        
+                        
+                        
+                        if __name__ == '__main__':
+                            fptr = open(os.environ['OUTPUT_PATH'], 'w')
+                        
+                            n = int(input().strip())
+                        
+                            arr = []
+                        
+                            for _ in range(n):
+                                arr.append(list(map(int, input().rstrip().split())))
+                        
+                            result = diagonalDifference(arr)
+                        
+                            fptr.write(str(result) + '\n')
+                        
+                            fptr.close()
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 16 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Grading Students
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        n = int(input().strip())
+                        for a0 in range(n):
+                         grade = int(input().strip())
+                     
+                         if grade >= 38:
+                             mod5 = grade % 5
+                             if mod5 >= 3:
+                                 grade = grade + (5 - mod5)
+                         print(grade)
+                     
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 17 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Drawing Book 
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        import sys
+
+                        n = int(input().strip())
+                        p = int(input().strip())
+                        print(min(p//2,n//2-(p//2)))
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 18 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Divisible Sum Pairs
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        import sys
+
+
+                        n,k = input().strip().split(' ')
+                        n,k = [int(n),int(k)]
+                        a = [int(a_temp) for a_temp in input().strip().split(' ')]
+                        
+                        result = 0
+                        for i in range(n-1):
+                            for j in range(i+1, n):
+                                if not ((a[i] + a[j]) % k):
+                                    result += 1
+                        print(result)
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 19 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Mini-Max Sum
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+                        import math
+                        import os
+                        import random
+                        import re
+                        import sys
+                        
+                        def miniMaxSum(arr):
+                            # Write your code here
+                            arr = sorted(arr)
+                            print(sum(arr[:-1]),sum(arr[1:]))
+                        
+                        if __name__ == '__main__':
+                        
+                            arr = list(map(int, input().rstrip().split()))
+                        
+                            miniMaxSum(arr)
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 20 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Counting Valleys
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        N=int(input())
+                        S=input()
+                        L=0
+                        V=0
+                        for s in S:
+                            if s == 'U':
+                                L += 1
+                                if L == 0:
+                                    V += 1
+                            else:
+                                L -= 1
+                        print(V)
+
+
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 21 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Library Fine
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #include <stdio.h>
+                            #include <string.h>
+                            #include <math.h>
+                            #include <stdlib.h>
+                            
+                            int main() {    
+                                
+                                int edd, emm, eyyyy, add, amm, ayyyy;
+                                int fine =0;
+                                
+                                scanf("%d%d%d%d%d%d", &add, &amm, &ayyyy, &edd, &emm, &eyyyy);
+                                
+                                if(ayyyy < eyyyy){
+                                    fine = 0;    
+                                }
+                                else if(ayyyy > eyyyy){
+                                    fine = 10000;
+                                }
+                                else if(ayyyy == eyyyy){
+                                    if(amm < emm){
+                                        fine = 0;
+                                    }
+                                    else if(amm > emm){
+                                        fine = 500 * (amm - emm);
+                                    }
+                                    else if(amm == emm){
+                                        if(add <= edd){
+                                            fine = 0;
+                                        }
+                                        else if(add > edd){
+                                            fine = 15 * (add - edd);
+                                        }
+                                    }
+                                }
+                                
+                                printf("%d", fine);
+                                
+                                return 0;
+                            }
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 22 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Time Conversion
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        import os
+                        import sys
+                        
+                        def timeConversion(s):
+                            time = s.split(":")
+                            if s[-2:] == "PM":
+                                if time[0] != "12":
+                                    time[0] = str(int(time[0])+12)
+                            else:
+                                if time[0] == "12":
+                                    time[0] = "00"
+                            ntime = ':'.join(time)
+                            return str(ntime[:-2])
+                            
+                        if __name__ == '__main__':
+                            f = open(os.environ['OUTPUT_PATH'], 'w')
+                        
+                            s = input()
+                        
+                            result = timeConversion(s)
+                        
+                            f.write(result + '\n')
+                        
+                            f.close()
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 23 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Caesar Cipher
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        N = int(input())
+                        string = list(input())
+                        addNum = int(input())
+                        
+                        length = len(string)
+                        for i in range(length):
+                            if ord(string[i]) <= ord("Z") and ord(string[i]) >= ord("A"):
+                                asciiCode = ord(string[i]) + addNum
+                                while asciiCode > ord("Z"):
+                                    asciiCode = asciiCode - ord("Z") + ord("A") - 1
+                                string[i] = chr(asciiCode)
+                            elif ord(string[i]) <= ord("z") and ord(string[i]) >= ord("a"):
+                                asciiCode = ord(string[i]) + addNum
+                                while asciiCode > ord("z"):
+                                    asciiCode = asciiCode - ord("z") + ord("a") - 1
+                                string[i] = chr(asciiCode)
+                        
+                        print("".join(string))
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 24 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            towerBreakers
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        T = int(input())
+                        for t in range(T):
+                            n, m = [int(x) for x in input().strip().split()]
+                            if m == 1: 
+                                print(2)
+                            else:
+                                if n % 2 == 1:
+                                    print(1)
+                                else:
+                                    print(2)
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 25 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            hurdleRace
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+def hurdleRace(k, height):
+    maxi = max(height)
+    if(maxi>k):
+        return maxi-k
+    return 0
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nk = input().split()
+
+    n = int(nk[0])
+
+    k = int(nk[1])
+
+    height = list(map(int, input().rstrip().split()))
+
+    result = hurdleRace(k, height)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 26 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Strong Password
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        import math
+import os
+import random
+import re
+import sys
+
+numbers = "0123456789"
+lower_case = "abcdefghijklmnopqrstuvwxyz"
+upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+special_characters = "!@#$%^&*()-+"
+
+def minimumNumber(n, password):
+    res = 0
+
+    if not any(x in numbers for x in password):
+        res += 1
+    
+    if not any(x in lower_case for x in password):
+        res += 1
+
+    if not any(x in upper_case for x in password):
+        res += 1
+
+    if not any(x in special_characters for x in password):
+        res += 1
+
+    if len(password) < 6:
+        return max(res, 6 - len(password))
+    
+    return res
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+    password = input()
+
+    answer = minimumNumber(n, password)
+
+    fptr.write(str(answer) + '\n')
+    fptr.close()
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 27 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Minimum Absolute Difference in an Array
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        import math
+                        import os
+                        import random
+                        import re
+                        import sys
+                        
+                        # Complete the minimumAbsoluteDifference function below.
+                        def minimumAbsoluteDifference(arr):
+                            diffs = []
+                            arr.sort()
+                            for i in range(len(arr)-1):
+                                diffs.append(abs(arr[i]-arr[i+1]))
+                            return min(diffs)
+                        
+                        if __name__ == '__main__':
+                            fptr = open(os.environ['OUTPUT_PATH'], 'w')
+                        
+                            n = int(input())
+                        
+                            arr = list(map(int, input().rstrip().split()))
+                        
+                            result = minimumAbsoluteDifference(arr)
+                        
+                            fptr.write(str(result) + '\n')
+                        
+                            fptr.close()
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 28 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Mars Exploration
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        s = input()
+                        n = "SOS"*(len(s)//3)
+                        cnt = 0
+                        for i in range(len(s)):
+                            if s[i] != n[i]:
+                                cnt += 1
+                        print(cnt)
+                                                
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 29 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Electronics Shop
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+                        import os
+                        import sys
+                        
+                        def getMoneySpent(keyboards, drives, b):
+                            return max([sum([x,y]) for x in keyboards for y in drives if sum([x,y]) <= b]+[-1])
+                        
+                        if __name__ == '__main__':
+                            fptr = open(os.environ['OUTPUT_PATH'], 'w')
+                        
+                            bnm = input().split()
+                        
+                            b = int(bnm[0])
+                        
+                            n = int(bnm[1])
+                        
+                            m = int(bnm[2])
+                        
+                            keyboards = list(map(int, input().rstrip().split()))
+                        
+                            drives = list(map(int, input().rstrip().split()))
+                        
+                            moneySpent = getMoneySpent(keyboards, drives, b)
+                        
+                            fptr.write(str(moneySpent) + '\n')
+                        
+                            fptr.close()
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 30 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Viral Advertising
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+                        import math
+                        import os
+                        import random
+                        import re
+                        import sys
+                        
+                        # Complete the viralAdvertising function below.
+                        def viralAdvertising(n):
+                            shared =5
+                            cumulative=0
+                            for i in range(1,n+1):
+                                liked = shared//2
+                                cumulative+=liked
+                                shared = liked*3
+                            return cumulative
+                        
+                        if __name__ == '__main__':
+                            fptr = open(os.environ['OUTPUT_PATH'], 'w')
+                        
+                            n = int(input())
+                        
+                            result = viralAdvertising(n)
+                        
+                            fptr.write(str(result) + '\n')
+                        
+                            fptr.close()
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 31 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Jumping on the Clouds: Revisited
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+                import sys
+
+                def jumpingOnClouds(c, k):
+                    cur = k % n
+                    energy = 100 - 1 - c[cur]*2
+                    
+                    while cur != 0:
+                        cur = (cur + k) % n
+                        energy -= 1 + c[cur]*2
+                        
+                    return energy
+
+                if __name__ == "__main__":
+                    n, k = input().strip().split(' ')
+                    n, k = [int(n), int(k)]
+                    c = list(map(int, input().strip().split(' ')))
+                    result = jumpingOnClouds(c, k)
+                    print(result)
+
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 32 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Game of Stones
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        def get_winner(n):
+                        ans=[None]*(n+1)
+                        ans[0]=False
+                        ans[1]=False
+                        for i in range(n+1):
+                            if ans[i]==False:
+                                for j in [i+2,i+3,i+5]:
+                                    if j<n+1:
+                                        ans[j]=True
+                            elif ans[i] is None:
+                                for j in [i-2, i-3, i-5]:
+                                    if j>0 and ans[j]!=True:
+                                        print('??',i,j,ans[j])
+                                ans[i]=False
+                                for j in [i+2,i+3,i+5]:
+                                    if j<n+1:
+                                        ans[j]=True
+                            # print(i,ans)
+                        return ans
+                    
+                    w=get_winner(100)
+                    for _ in range(int(input().strip())):
+                        print('First' if w[int(input().strip())] else 'Second')
+                    
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 33 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Marc's Cakewalk
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        import java.io.*;
+                        import java.util.*;
+                        import java.text.*;
+                        import java.math.*;
+                        import java.util.regex.*;
+                        
+                        public class Solution {
+                        
+                            public static void main(String[] args) {
+                                Scanner in = new Scanner(System.in);
+                                int n = in.nextInt();
+                                Integer[] calories = new Integer[n];
+                                for(int calories_i=0; calories_i < n; calories_i++){
+                                    calories[calories_i] = in.nextInt();
+                                }
+                                List<Integer> calList = Arrays.asList(calories);
+                                Collections.sort(calList, Collections.reverseOrder());
+                        
+                                long cals = 0;
+                                for (int i=0;i<calList.size();i++) {
+                                    cals += Math.pow(2,i)*calList.get(i);
+                                }
+                                System.out.println(cals);
+                            }
+                        }
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 34 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Cats and a Mouse
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+                        import sys
+                        
+                        
+                        q = int(input().strip())
+                        for a0 in range(q):
+                            x,y,z = input().strip().split(' ')
+                            x,y,z = [int(x),int(y),int(z)]
+                            if abs(x-z)>abs(y-z):
+                                print('Cat B')
+                            elif abs(x-z)<abs(y-z):
+                                print('Cat A')
+                            else:
+                                print('Mouse C')
+                        
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 35 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Save the Prisoner
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        import java.io.*;
+                        import java.util.*;
+                        
+                        public class Solution {
+                        
+                            public static void main(String[] args) {
+                                /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+                                Scanner scan = new Scanner(System.in);
+                                int c = Integer.parseInt(scan.nextLine());
+                                for(int i=0;i<c;i++){
+                                    String[] sp = scan.nextLine().split("\\s+");
+                                    int N = Integer.parseInt(sp[0]);
+                                    int M = Integer.parseInt(sp[1]);
+                                    int S = Integer.parseInt(sp[2]);
+                                    int next = M+S;
+                                    next=(next-1)%N;
+                                    if(next == 0)next = N;
+                                    System.out.println(next);
+                                }
+                            }
+                        }
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 36 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Beautiful Days at the Movies
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+                        import math
+                        import os
+                        import random
+                        import re
+                        import sys
+                        
+                        #
+                        # Complete the 'beautifulDays' function below.
+                        #
+                        # The function is expected to return an INTEGER.
+                        # The function accepts following parameters:
+                        #  1. INTEGER i
+                        #  2. INTEGER j
+                        #  3. INTEGER k
+                        #
+                        
+                        def beautifulDays(i, j, k):
+                            daycount = int(0)
+                            for x in range(i, j+1):
+                                if (x - int(str(x)[::-1])) % k == 0:
+                                    daycount += 1
+                            return daycount
+                        
+                        if __name__ == '__main__':
+                            fptr = open(os.environ['OUTPUT_PATH'], 'w')
+                        
+                            first_multiple_input = input().rstrip().split()
+                        
+                            i = int(first_multiple_input[0])
+                        
+                            j = int(first_multiple_input[1])
+                        
+                            k = int(first_multiple_input[2])
+                        
+                            result = beautifulDays(i, j, k)
+                        
+                            fptr.write(str(result) + '\n')
+                        
+                            fptr.close()
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 37 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Sequence Equation
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/usr/bin/env python3
+
+                        import sys
+                        
+                        def permutationEquation(p):
+                            output = []
+                            
+                            for num in range(1, max(p)+1):
+                                output.append(p.index(p.index(num)+1)+1)
+                                
+                            return output
+                            
+                        
+                        if __name__ == "__main__":
+                            n = int(input().strip())
+                            p = list(map(int, input().strip().split(' ')))
+                            result = permutationEquation(p)
+                            print ("\n".join(map(str, result)))
+                        
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 38 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Grid Challenge 
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        import java.io.*;
+                        import java.math.*;
+                        import java.security.*;
+                        import java.text.*;
+                        import java.util.*;
+                        import java.util.concurrent.*;
+                        import java.util.regex.*;
+                        
+                        public class Solution {
+                        
+                         
+                            static void gridChallenge(String[] grid,int n) {
+                                char ll[] = new char[n];
+                                char b[] = new char[n];
+                                boolean xx=true;
+                                int i=0;
+                             while(xx && i<grid[0].length()){
+                                 for(int j=0 ; j<n;j++ ){
+                                    ll[j]=grid[j].charAt(i);
+                                 }
+                                   
+                                    b=Arrays.copyOf(ll,n);
+                                    Arrays.sort(ll);
+                                    
+                                    if(!(Arrays.equals(b,ll))){
+                                          xx=false; 
+                                          break;
+                                    }          
+                                 i++;
+                            }
+                               
+                                    if(xx){
+                                        System.out.println("YES");
+                                    }
+                                    else{
+                                        System.out.println("NO");
+                                    }
+                             }
+                        
+                            public static void main(String[] args) {
+                                Scanner scanner = new Scanner(System.in);
+                                int x = scanner.nextInt();
+                            
+                                for (int j = 0; j < x; j++){
+                                     int n = scanner.nextInt();
+                                       String[] arr = new String[n];
+                                    for (int i = 0; i < n; i++) {
+                                        String arrItem = scanner.next();
+                                            char xx[]=arrItem.toCharArray();
+                                                Arrays.sort(xx);  
+                                                    String string = new String(xx);
+                                                        arr[i] = string ;
+                                    }
+                                            gridChallenge(arr,n);
+                                 }    
+                            }
+                        }
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+       
+        <!-- Solution 39 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Sherlock and Squares
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        t = int(input())
+
+                        for i in range (0,t):
+                            count = 0
+                            a,b = [int(j) for j in input().strip().split()]
+                            square1 = a ** (.5)
+                            if (square1 != int(square1)):
+                                a1 = int(square1) + 1
+                            else:
+                                a1 = int(square1)
+                            square2 = b ** (.5)
+                            b1 = int(square2)
+                            count = b1 - a1 +1
+                            print(count)
+                        
+
+                </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 40 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Circular Array Rotation
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        N, K, Q= map(int, input().split())
+                        A= tuple(map(int, input().split()))
+                        for _ in range(Q):
+                            print(A[(int(input())+N-K)%N])
+                        
+
+                </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 41 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Big Sorting
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+                        import sys
+                        
+                        
+                        n = int(input().strip())
+                        unsorted = []
+                        unsorted_i = 0
+                        for unsorted_i in range(n):
+                            unsorted_t = str(input().strip())
+                            unsorted.append(unsorted_t)
+                        for v in sorted(unsorted, key = lambda v: int(v)):
+                            print(v)
+                        
+                </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 42 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Big Sorting
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                      
+                        import java.io.*;
+                        import java.util.*;
+                        import java.text.*;
+                        import java.math.*;
+                        import java.util.regex.*;
+                        
+                        public class Solution {
+                        
+                            public static void main(String[] args) {
+                                Scanner in = new Scanner(System.in);
+                                int n = in.nextInt();
+                                String[] unsorted = new String[n];
+                                for(int unsorted_i=0; unsorted_i < n; unsorted_i++){
+                                    unsorted[unsorted_i] = in.next();
+                                }
+                                Map<Integer, ArrayList<String>> map = new TreeMap<>();
+                                for(int i = 0; i < n; i++) {
+                                    ArrayList<String> mapValue = map.get(unsorted[i].length());
+                                    if(mapValue == null) {
+                                        mapValue = new ArrayList<>();
+                                        mapValue.add(unsorted[i]);
+                                        map.put(unsorted[i].length(), mapValue);
+                                    } else {
+                                        mapValue.add(unsorted[i]);
+                                    }
+                                }
+                                
+                                for(ArrayList<String> list : map.values()) {
+                                    Collections.sort(list);
+                                }
+                                
+                                for(Integer i : map.keySet()) {
+                                    System.out.println(Arrays.toString(map.get(i).toArray(new String[0])).replaceAll("[\\[\\],]", "").replaceAll(" ", "\n"));
+                                }
+                            }
+                        }
+                        
+                </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 43 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Equalize the Array
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+                        import math
+                        import os
+                        import random
+                        import re
+                        import sys
+                        
+                        # Complete the equalizeArray function below.
+                        def equalizeArray(arr):
+                            return (len(arr) - arr.count(max(set(arr), key = arr.count)))
+                        
+                        
+                        
+                        if __name__ == '__main__':
+                            fptr = open(os.environ['OUTPUT_PATH'], 'w')
+                        
+                            n = int(input())
+                        
+                            arr = list(map(int, input().rstrip().split()))
+                        
+                            result = equalizeArray(arr)
+                        
+                            fptr.write(str(result) + '\n')
+                        
+                            fptr.close()
+                        
+
+                </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 44 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Minimum Distances
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        import sys
+
+                        def minimumDistances(array):
+                            res = -1
+                            memo = [-1] * (10**5 + 3)
+                            
+                            for ind, el in enumerate(array):
+                                if memo[el] >= 0:
+                                    res = min(res if res >= 0 else 10**5 + 2, ind - memo[el])
+                                memo[el] = ind
+                                
+                            return res
+                        
+                        if __name__ == "__main__":
+                            n = int(input().strip())
+                            a = list(map(int, input().strip().split(' ')))
+                            result = minimumDistances(a)
+                            print(result)
+                                            
+
+                </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 45 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Separate the Numbers
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+                        import sys
+                        
+                        def validate(s, first):
+                            while s:
+                                if s.startswith(first):
+                                    s = s[len(first):]
+                                    first = str(int(first) + 1)
+                                else:
+                                    return False
+                            return True
+                        
+                        def separateNumbers(s):
+                            if s[0] == '0' and len(s) > 1:
+                                return "NO"
+                            else:
+                                for ind in range(1, len(s)//2 + 1):
+                                    first = s[:ind]
+                                    if validate(str(s), first):
+                                        return "YES " + first
+                            return "NO"
+                                    
+                        
+                        if __name__ == "__main__":
+                            q = int(input().strip())
+                            for a0 in range(q):
+                                s = input().strip()
+                                print(separateNumbers(s))
+
+                </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 46 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            The Love-Letter Mystery
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        #!/bin/python3
+
+                        import sys
+                        
+                        def theLoveLetterMystery(s):
+                            string = list(s)
+                            res = 0
+                            first = []
+                            second = []
+                            
+                            if len(string) % 2 == 1:
+                                first = list(map(lambda x: ord(x), string[:len(string)//2]))
+                                first = first[::-1]
+                                second = list(map(lambda x: ord(x), string[len(string)//2 + 1:]))
+                            else:
+                                first = list(map(lambda x: ord(x), string[:len(string)//2 - 1]))
+                                first = first[::-1]
+                                second = list(map(lambda x: ord(x), string[len(string)//2 + 1:]))
+                                res = abs(ord(string[len(string)//2 - 1]) - ord(string[len(string)//2]))
+                                
+                            for ind in range(len(first)):
+                                if first[ind] != second[ind]:
+                                    res += abs(first[ind] - second[ind])
+                                    first[ind] = min(first[ind], second[ind])
+                                    second[ind] = first[ind]
+                                    
+                            return res
+                                
+                                
+                        
+                        q = int(input().strip())
+                        for a0 in range(q):
+                            s = input().strip()
+                            result = theLoveLetterMystery(s)
+                            print(result)
+                        
+
+                </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 47 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Halloween Sale
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        import os
+
+                        def howManyGames(p, d, m, s):
+                            price = result = last_price = 0
+                            while price <= s:
+                                if result == 0:
+                                    last_price = p
+                                elif last_price - d > m:
+                                    last_price = last_price - d
+                                else:
+                                    last_price = m
+                                price += last_price
+                                result += 1
+                            return result - 1
+                        
+                        if __name__ == '__main__':
+                            # fptr = open(os.environ['OUTPUT_PATH'], 'w')
+                            p, d, m, s = list(map(int, input().strip().split(' ')))
+                            answer = howManyGames(p, d, m, s)
+                            print (str(answer) + '\n')
+                            # fptr.write(str(answer) + '\n')
+                            # fptr.close()
+                        
+
+                </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 48 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Maximum Perimeter Triangle 
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                        n = int(input())
+                        a = list(map(int, input().split()))
+                        a = sorted(a)
+                        for i in range(0,n-2):
+                            x = a[n-1-i]
+                            y = a[n-2-i]
+                            z = a[n-3-i]
+                            if y + z > x:
+                                print(str(z) + " "+ str(y) + " " + str(x))
+                                exit()
+                        print(-1)
+                        
+
+                </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 49 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Angry Professor
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                      
+
+                </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 50 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Angry Professor
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                      
+
+                </code></pre>
+                </div>
+            </div>
+        </div>
+        <!-- Solution 51 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            Angry Professor
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <pre><code class="python">
+                      
+
+                </code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add more solutions as needed -->
+
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
